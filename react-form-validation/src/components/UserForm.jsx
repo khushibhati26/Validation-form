@@ -111,12 +111,12 @@ const UserForm = ({ onSubmit }) => {
     
     let processedValue = value;
     
-    // Format PAN number to uppercase
+
     if (name === 'panNumber') {
       processedValue = value.toUpperCase();
     }
     
-    // Format Aadhar number with spaces
+    
     if (name === 'aadharNumber') {
       processedValue = value.replace(/\s/g, '').replace(/(\d{4})(?=\d)/g, '$1 ');
     }
@@ -126,7 +126,7 @@ const UserForm = ({ onSubmit }) => {
       [name]: processedValue
     }));
 
-    // Clear error when user starts typing
+ 
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -134,14 +134,13 @@ const UserForm = ({ onSubmit }) => {
       }));
     }
 
-    // Handle country change to update cities
     if (name === 'country') {
       const selectedCountry = countriesData.find(c => c.name === value);
       setAvailableCities(selectedCountry ? selectedCountry.cities : []);
       setFormData(prev => ({
         ...prev,
         country: value,
-        city: '' // Reset city when country changes
+        city: '' 
       }));
     }
   };
@@ -201,7 +200,7 @@ const UserForm = ({ onSubmit }) => {
       <div className="form-wrapper">
         <h2>User Registration Form</h2>
         <form onSubmit={handleSubmit} className="user-form">
-          {/* First Name */}
+       
           <div className="form-group">
             <label htmlFor="firstName">First Name *</label>
             <input
@@ -217,8 +216,7 @@ const UserForm = ({ onSubmit }) => {
             {errors.firstName && <span className="error-message">{errors.firstName}</span>}
           </div>
 
-          {/* Last Name */}
-          <div className="form-group">
+                   <div className="form-group">
             <label htmlFor="lastName">Last Name *</label>
             <input
               type="text"
@@ -233,7 +231,7 @@ const UserForm = ({ onSubmit }) => {
             {errors.lastName && <span className="error-message">{errors.lastName}</span>}
           </div>
 
-          {/* Username */}
+     
           <div className="form-group">
             <label htmlFor="username">Username *</label>
             <input
@@ -249,7 +247,7 @@ const UserForm = ({ onSubmit }) => {
             {errors.username && <span className="error-message">{errors.username}</span>}
           </div>
 
-          {/* Email */}
+        
           <div className="form-group">
             <label htmlFor="email">Email *</label>
             <input
@@ -265,7 +263,6 @@ const UserForm = ({ onSubmit }) => {
             {errors.email && <span className="error-message">{errors.email}</span>}
           </div>
 
-          {/* Password */}
           <div className="form-group">
             <label htmlFor="password">Password *</label>
             <div className="password-input">
@@ -290,7 +287,7 @@ const UserForm = ({ onSubmit }) => {
             {errors.password && <span className="error-message">{errors.password}</span>}
           </div>
 
-          {/* Phone Number */}
+        
           <div className="form-group">
             <label htmlFor="phoneNumber">Phone Number *</label>
             <div className="phone-input">
@@ -320,7 +317,7 @@ const UserForm = ({ onSubmit }) => {
             {errors.phoneNumber && <span className="error-message">{errors.phoneNumber}</span>}
           </div>
 
-          {/* Country */}
+        
           <div className="form-group">
             <label htmlFor="country">Country *</label>
             <select
@@ -341,7 +338,7 @@ const UserForm = ({ onSubmit }) => {
             {errors.country && <span className="error-message">{errors.country}</span>}
           </div>
 
-          {/* City */}
+        
           <div className="form-group">
             <label htmlFor="city">City *</label>
             <select
@@ -363,7 +360,6 @@ const UserForm = ({ onSubmit }) => {
             {errors.city && <span className="error-message">{errors.city}</span>}
           </div>
 
-          {/* PAN Number */}
           <div className="form-group">
             <label htmlFor="panNumber">PAN Number *</label>
             <input
@@ -380,13 +376,13 @@ const UserForm = ({ onSubmit }) => {
             {errors.panNumber && <span className="error-message">{errors.panNumber}</span>}
           </div>
 
-          {/* Aadhar Number */}
+         
           <div className="form-group">
             <label htmlFor="aadharNumber">Aadhar Number *</label>
             <input
               type="text"
               id="aadharNumber"
-              name="aadharNumber"
+       name="aadharNumber"
               value={formData.aadharNumber}
               onChange={handleInputChange}
               onBlur={handleBlur}
